@@ -27,7 +27,7 @@ SECRET_KEY = '@v3ic7t#we3kw!=br6!s#jc9sgo=a=47#p6c4=ps+l%&d&60s$'
 #nos permite ver los errores que se tendran en la pagina al finalizar se debe pcultare
 DEBUG = True
 #se define quienes se puden conectar
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['https://gramz.pythonanywhere.com']
 
 
 # Application definition
