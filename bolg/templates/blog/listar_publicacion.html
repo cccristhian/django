@@ -1,5 +1,5 @@
- {% load staticfiles %}
-
+{% extends 'blog/base.html' %}
+{% block content %}
       {% for p in publi %}
           <div class="post">
               <p>publicado: {{ p.autor }}</p>
@@ -7,5 +7,4 @@
               <!-- <p>{{ p.texto|linebreaksbr }}</p> -->
           </div>
       {% endfor %}
-    </body>
-</html>
+{% endblock content %}
