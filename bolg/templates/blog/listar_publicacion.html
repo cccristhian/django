@@ -1,14 +1,20 @@
+ {% load staticfiles %}
 <html>
     <head>
         <title>Pagina Prueba</title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
     </head>
     <body>
-  <div>
+
+  <div class="page-header">
           <h1><a href="/">Django Girls Blog</a></h1>
       </div>
 
       {% for p in publi %}
-          <div>
+          <div class="post">
               <p>publicado: {{ p.autor }}</p>
               <h1><a href="">{{ p.titulo }}</a></h1>
               <!-- <p>{{ p.texto|linebreaksbr }}</p> -->
