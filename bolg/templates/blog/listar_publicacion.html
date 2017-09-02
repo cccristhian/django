@@ -6,9 +6,9 @@
                {% for p in publi %}
                    <div class="post">
                        <div class="date">
-                         <td>{{ p.autor }}</td>
+                         <td>{{ p.fecha_publica }}</td>
                        </div>
-                       <h1><a href=""{%url 'postear' pk=p.pk %}>{{ p.titulo }}</a></h1>
+                       <h1><a href="{%url 'postear' pk=p.pk %}">{{ p.titulo }}</a></h1>
                        <p>{{ p.texto|linebreaksbr }}</p>
                    </div>
                {% endfor %}
