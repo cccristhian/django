@@ -1,0 +1,9 @@
+{% extends 'blog/base.html' %}
+
+    {% block content %}
+        <h1>Nueva Publicacion</h1>
+        <form method="POST" class="post-form">{% csrf_token %}//verifica que la sesion este iniciada para poder abrir la pagina{% csrf_token %}
+            {{ f.as_p }}//esta variable viene de views
+            <button type="submit" class="save btn btn-default">Guardar</button>
+        </form>
+    {% endblock %}
