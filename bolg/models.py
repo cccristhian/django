@@ -16,6 +16,10 @@ class Publicar(models.Model):
 
     def __str__(self):
         return self.titulo
+
+    def publish(self):
+        self.fecha_publica = timezone.now()
+        self.save()
     # Create your models here.
     #self se esta haciendo referencia a la misma tabla
     # def __str__(self): campo de despliegue principal cuando se haga una busqueda

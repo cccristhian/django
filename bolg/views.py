@@ -11,13 +11,27 @@ def listar_publicacion(request):
 def detalle_pub(request,pk):
     p=get_object_or_404(Publicar, pk=pk)
     return render(request,'blog/detalle_pub.html', {'p':p})
+def post_draft_list(request):
+    publi = Publicar.objects.filter(fecha_publica__isnull=True).order_by('fecha_crear')
+    return render(request, 'blog/post_draft_list.html', {'publi': publi})
+
+def post_remove(request, pk):
+    p = get_object_or_404(Publicar, pk=pk)
+    p.delete()
+    return redirect('http://127.0.0.1:8000/')
+
+def post_publish(request, pk):
+    p = get_object_or_404(Publicar, pk=pk)
+    p.publish()
+    return redirect('http://127.0.0.1:8000/')
+
 def nueva_publicacion(request):
     if request.method == "POST":#verifica que sea la primera vez que se ingresa al sistema
         f = postearForm(request.POST)
         if f.is_valid():#//si ya gue llamado una vez se recuperan los datos ingresados anteriormente
             p = f.save(commit=False)#//abre la conexion
             p.autor = request.user#//usuario que esta logueado
-            p.fecha_publica = timezone.now()
+            #p.fecha_publica = timezone.now()
             p.save()#//guardar en la base de datos
             return redirect('postear', pk=p.pk)
     else:
