@@ -1,12 +1,12 @@
 {% extends 'blog/base.html' %}
 {% block content %}
   <div class="post">
+    <a href="{% url 'post_remove' pk=p.pk %}"class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></a>
     {% if p.fecha_publica %}
         <div class="date">
             {{ p.fecha_publica }}
         </div>
     {% else %}
-        <a href="{% url 'post_remove' pk=p.pk %}"class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></a>
         <a class="btn btn-default" href="{% url 'post_publish' pk=p.pk %}">Publish</a>
     {% endif %}
     <h1>{{p.titulo}}</h1>
