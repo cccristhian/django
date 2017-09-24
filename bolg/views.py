@@ -18,12 +18,12 @@ def post_draft_list(request):
 def post_remove(request, pk):
     p = get_object_or_404(Publicar, pk=pk)
     p.delete()
-    return redirect('http://127.0.0.1:8000/')
+    return redirect('/')
 
 def post_publish(request, pk):
     p = get_object_or_404(Publicar, pk=pk)
     p.publish()
-    return redirect('http://127.0.0.1:8000/')
+    return render(request,'blog/detalle_pub.html', {'p':p})
 
 def nueva_publicacion(request):
     if request.method == "POST":#verifica que sea la primera vez que se ingresa al sistema
