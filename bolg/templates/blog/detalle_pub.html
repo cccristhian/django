@@ -2,12 +2,12 @@
 {% block content %}
   <div class="post">
     <a href="{% url 'post_remove' pk=p.pk %}"class="btn btn-default"><span class="glyphicon glyphicon-remove"></span></a>
+    <a class="btn btn-default" href="{% url 'post_edit' pk=p.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
     {% if p.fecha_publica %}
-        <div class="date">
             {{ p.fecha_publica }}
         </div>
     {% else %}
-        <a class="btn btn-default" href="{% url 'post_publish' pk=p.pk %}">Publish</a>
+        <a class="btn btn-default" href="{% url 'post_publish' pk=p.pk %}">Publicar</a>
     {% endif %}
     <h1>{{p.titulo}}</h1>
     <p>{{p.texto|linebreaksbr}}</p>

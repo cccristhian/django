@@ -20,6 +20,19 @@ def post_remove(request, pk):
     p.delete()
     return redirect('/')
 
+def post_edit(request, pk):
+    p = get_object_or_404(Publicar, pk=pk)
+    if request.method == "POST":
+        f = postearForm(request.POST, instance=p)
+        if f.is_valid():
+            p = f.save(commit=False)
+            p.autor = request.user
+            p.save()
+            return redirect('postear', pk=p.pk)
+    else:
+       f = postearForm(instance=p)
+    return render(request, 'blog/nueva_publicacion.html', {'f': f})
+
 def post_publish(request, pk):
     p = get_object_or_404(Publicar, pk=pk)
     p.publish()
@@ -36,4 +49,4 @@ def nueva_publicacion(request):
             return redirect('postear', pk=p.pk)
     else:
         f = postearForm()
-        return render(request, 'blog/nueva_publicacion.html', {'f': f})
+    return render(request, 'blog/nueva_publicacion.html', {'f': f})
